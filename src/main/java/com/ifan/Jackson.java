@@ -1,7 +1,10 @@
 package com.ifan;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.util.List;
 
 public class Jackson {
 
@@ -32,8 +35,22 @@ public class Jackson {
         }
     }
 
+    public static <T> List<T> jsonToList(String data,Class<T> beanType)
+    {
+        JavaType javaType = MAPPER.getTypeFactory().constructParametricType(List.class,beanType);
+        try {
+            return MAPPER.readValue(data,javaType);
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static void main(String[] args) {
         String str = "{\"movie\":\"1193\",\"rate\":\"5\",\"timeStamp\":\"978300760\",\"uid\":\"1\"}";
+
+        String str1 = "[{\"movie\":\"1193\",\"rate\":\"5\",\"timeStamp\":\"978300760\",\"uid\":\"1\"},{\"movie\":\"661\",\"rate\":\"3\",\"timeStamp\":\"978302109\",\"uid\":\"1\"}]";
 
 
         MovieBean movieBean = Jackson.jsonToPojo(str,MovieBean.class);
@@ -47,6 +64,10 @@ public class Jackson {
         String string = Jackson.objectToJson(movieBean);
 
         System.out.println("result: " + string);
+
+        List<MovieBean> list = Jackson.jsonToList(str1,MovieBean.class);
+
+        System.out.println(list);
 
 
 
