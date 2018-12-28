@@ -1,5 +1,7 @@
 package com.ifan;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -68,6 +70,21 @@ public class Jackson {
         List<MovieBean> list = Jackson.jsonToList(str1,MovieBean.class);
 
         System.out.println(list);
+
+
+        //Json
+
+        JSONObject jsonObject = JSONObject.parseObject(str);
+
+        System.out.println("movie: " + jsonObject.getString("movie"));
+
+        JSONArray jsonArray = JSONArray.parseArray(str1);
+
+        for(int i=0; i<jsonArray.size(); i++)
+        {
+            JSONObject object = JSONObject.parseObject(jsonArray.get(i).toString());
+            System.out.println(object.getString("movie"));
+        }
 
 
 
