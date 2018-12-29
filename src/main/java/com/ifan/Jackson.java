@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
 
 public class Jackson {
@@ -100,7 +101,13 @@ public class Jackson {
             + "=A57E8D9F48EF80BCF5EE07784772915956B52517&ts=1545836401&user_id=1084801556&wh=750x1334`0.001";
 
         try{
-            System.out.println(URLDecoder.decode(str2,"UTF-8"));
+
+            String str3 = URLDecoder.decode(str2,"UTF-8");
+            System.out.println(str3);
+
+            String str4 = URLEncoder.encode(str3);
+            System.out.println(URLDecoder.decode(str4));
+
         }catch (Exception e)
         {
             e.printStackTrace();
