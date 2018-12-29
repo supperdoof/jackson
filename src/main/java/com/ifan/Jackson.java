@@ -111,6 +111,15 @@ public class Jackson {
             String str5 = "=";
             System.out.println(str5.replaceAll("=","%3d"));
 
+            System.out.println();
+            System.out.println();
+
+            str2 = str2.replaceAll("=","%3d");
+
+            System.out.println(URLDecoder.decode(str2.replaceAll("%3d","=")));
+
+            System.out.println(str3.equals(URLDecoder.decode(str2.replaceAll("%3d","="))));
+
         }catch (Exception e)
         {
             e.printStackTrace();
