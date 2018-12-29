@@ -108,6 +108,9 @@ public class Jackson {
             String str4 = URLEncoder.encode(str3);
             System.out.println(URLDecoder.decode(str4));
 
+            String str5 = "=";
+            System.out.println(str5.replaceAll("=","%3d"));
+
         }catch (Exception e)
         {
             e.printStackTrace();
