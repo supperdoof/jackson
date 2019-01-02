@@ -2,10 +2,13 @@ package com.ifan;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.util.List;
 
 public class JsonTest {
+    private static Log log = LogFactory.getLog(JsonTest.class);
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     public static String objectToJson(Object data)
@@ -60,5 +63,7 @@ public class JsonTest {
         System.out.println(movieBean);
         System.out.println(str1);
         System.out.println(list.get(0).getMovie());
+
+        log.error("info");
     }
 }
